@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Card, CardContent } from "./uicomponent"
+import { Card } from "./uicomponent"
 import { Button } from "./uicomponent"
 import { ChevronRight, X, Check } from "lucide-react"
 import { services } from './data'

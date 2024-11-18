@@ -6,19 +6,12 @@ import kali from './assets/images/kali.jpg'
 import my from './assets/images/my.jpg'
 import p1 from './assets/images/IMG_8883.jpg'
 import p2 from './assets/images/cm.jpg'
+import { StaticImageData } from 'next/image';
 
 
 
 import { Briefcase, Users, Heart, Lightbulb, Award, Shield } from 'lucide-react'
-import { all } from 'axios'
-import { create } from 'domain'
-import { a, s, strong, data } from 'framer-motion/client'
-import { connect } from 'http2'
-import image from 'next/image'
-import { it, only } from 'node:test'
-import { space } from 'postcss/lib/list'
-import { use } from 'react'
-import style from 'styled-jsx/style'
+
 
 
   
@@ -33,7 +26,7 @@ import style from 'styled-jsx/style'
     title: string;
     description: string;
     role: string;
-    image: string;
+    image: StaticImageData;
   };
   
   export const coFounders: CoFounder[] = [

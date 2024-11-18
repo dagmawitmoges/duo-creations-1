@@ -1,7 +1,7 @@
 "use client"
 import logo from './assets/images/image.png'
 import bg from './assets/images/IMG_8883.jpg'
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
