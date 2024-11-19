@@ -27,7 +27,6 @@ import {
     Tabs,
     TabsList,
     TabsTrigger,
-    TabsContent,
     CardHeader,
     CardDescription,
     CardTitle,
