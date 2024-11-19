@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ChevronDown, Mail, MapPin, Phone, Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
+import { ChevronDown, Mail, MapPin, Phone, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
 import {
     Button,
     Input,
@@ -33,7 +33,7 @@ import {
 } from './uicomponent'
 import AutoScrollClients from './autoscroll'
 import AboutSection from './about'
-import {   services, clients, portfolioItems, testimonials, blogPosts } from './data'
+import { services, clients, portfolioItems, testimonials, blogPosts } from './data'
 import ServicesSection from './service'
 
 export default function IndexPage() {
@@ -96,15 +96,13 @@ export default function IndexPage() {
             </header>
             <main className="flex-grow">
                 <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-                <Image
-        src={bg} // Your YouTube thumbnail image URL
-        alt="YouTube Video"
-        layout="fill"
-        objectFit="cover" // Makes the image cover the entire container
-        priority={true} // Optional: makes this image load faster
-      />
-
-                   
+                    <Image
+                        src={bg}
+                        alt="YouTube Video"
+                        layout="fill"
+                        objectFit="cover"
+                        priority={true}
+                    />
                     <div className="absolute inset-0 bg-black bg-opacity-50" />
                     <div className="relative z-10 text-center text-white">
                         <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">Crafting Unforgettable Events</h1>
@@ -134,8 +132,7 @@ export default function IndexPage() {
                     </div>
                 </section>
                 <AboutSection  />
-               <ServicesSection/>
-  
+                <ServicesSection/>
                 <section id="portfolio" className="py-16 bg-gradient-to-b from-gray-100 to-white">
                     <div className="container mx-auto px-4">
                         <motion.h2 
@@ -207,7 +204,8 @@ export default function IndexPage() {
                                     <CarouselItem key={index}>
                                         <Card>
                                             <CardContent className="p-6 text-center">
-                                            <p className="italic mb-4">&quot;{testimonial.text}&quot;</p>                                                <p className="font-semibold">{testimonial.name}</p>
+                                                <p className="italic mb-4">&quot;{testimonial.text}&quot;</p>
+                                                <p className="font-semibold">{testimonial.name}</p>
                                                 <p className="text-sm text-muted-foreground">{testimonial.company}</p>
                                             </CardContent>
                                         </Card>
