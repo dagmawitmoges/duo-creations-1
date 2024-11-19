@@ -207,8 +207,7 @@ export default function IndexPage() {
                                     <CarouselItem key={index}>
                                         <Card>
                                             <CardContent className="p-6 text-center">
-                                                <p className="italic mb-4">"{testimonial.text}"</p>
-                                                <p className="font-semibold">{testimonial.name}</p>
+                                            <p className="italic mb-4">&quot;{testimonial.text}&quot;</p>                                                <p className="font-semibold">{testimonial.name}</p>
                                                 <p className="text-sm text-muted-foreground">{testimonial.company}</p>
                                             </CardContent>
                                         </Card>
