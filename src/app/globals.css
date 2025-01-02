@@ -2,23 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root Variables for Brand Colors */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --gold: #c6a664; /* Subtle gold shade */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --red: red; 
+    --gold: #d4af37;
+    /* Slightly brighter gold for dark mode */
   }
 }
 
+/* Global Body Styling */
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
+
+/* Background Gradient for Entire Page */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--background), var(--gold), var(--background));
+  z-index: -2;
+}
+
+/* Snowflake Effect */
+.snowflake {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  color: var(--red);
+  font-size: 1.5rem;
+  animation: fall 10s infinite linear, sway 5s infinite ease-in-out;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+@keyframes sway {
+  50% {
+    transform: translateX(-50px);
+  }
+}
+
+/* Tailwind Custom Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Scrollbar Styling */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: 3px;
+}
+
+/* Ensure Snowflakes Appear Throughout Page */
+.snowflake {
+  position: fixed;
+  top: -10%;
+  left: calc(50% - 10px); /* Random placement for variation */
+}
+
+/* Add Multiple Snowflakes with Random Animation Delays */
+@layer base {
+  .snowflake-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  .snowflake:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .snowflake:nth-child(2) {
+    animation-delay: 2s;
+    left: 20%;
+  }
+  .snowflake:nth-child(3) {
+    animation-delay: 4s;
+    left: 70%;
+  }
+  .snowflake:nth-child(4) {
+    animation-delay: 6s;
+    left: 40%;
+  }
+  .snowflake:nth-child(5) {
+    animation-delay: 8s;
+    left: 90%;
+  }
+}
+
 
 @layer utilities {
   .text-balance {

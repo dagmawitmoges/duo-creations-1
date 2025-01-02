@@ -127,7 +127,7 @@ export default function ServicesSection() {
     return (
       <section id="services" className="py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Our Services</h2>
+          <h1 className="text-4xl font-bold mb-16 bg-clip-text ">Our Services</h1>
           <p className="text-xl text-muted-foreground">No services available at the moment. Please check back later.</p>
         </div>
       </section>

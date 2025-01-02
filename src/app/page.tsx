@@ -1,5 +1,7 @@
 "use client"
-import logo from './assets/images/image.png'
+// import logo from './assets/images/image.png'
+import christmas_logo from './assets/images/image-removebg-preview (38).png'
+
 import bg from './assets/images/IMG_8883.jpg'
 // import ReactPlayer from 'react-player';
 
@@ -37,6 +39,13 @@ import { services, clients, portfolioItems, testimonials, blogPosts } from './da
 import ServicesSection from './service'
 
 export default function IndexPage() {
+    const snowflakes = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100 + "%",
+        animationDelay: Math.random() * 5 + "s",
+        fontSize: Math.random() * 10 + 10 + "px", // Random sizes for variety
+    }));
+
     const [activeSection, setActiveSection] = useState('home')
     const [isScrolled, setIsScrolled] = useState(false)
     const [activeItem, setActiveItem] = useState(portfolioItems[0])
@@ -69,31 +78,64 @@ export default function IndexPage() {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
-                <div className="container mx-auto px-4 py-4 flex justify-between items-center bg-transparent">
-                    <Link href="/" className={`${isScrolled ? 'text-primary' : 'text-white'}`}>
-                        <Image
-                            src={logo}
-                            alt="Duo Creations Logo"
-                            width={250}
-                            height={150}
-                            className="w-auto h-20"
-                        />
-                    </Link>
-                    <nav className="hidden md:flex space-x-4">
-                        {['home', 'clients', 'about', 'services', 'portfolio', 'testimonials', 'blog', 'contact'].map((section) => (
-                            <Button
-                                key={section}
-                                variant={isScrolled ? (activeSection === section ? 'default' : 'ghost') : 'link'}
-                                className={isScrolled ? '' : 'text-white'}
-                                onClick={() => scrollToSection(section)}
-                            >
-                                {section.charAt(0).toUpperCase() + section.slice(1)}
-                            </Button>
-                        ))}
-                    </nav>
-                </div>
-            </header>
+             {snowflakes.map(({ id, left, animationDelay, fontSize }) => (
+                <span
+                    key={id}
+                    className="snowflake"
+                    style={{
+                        left,
+                        animationDelay,
+                        fontSize,
+                    }}
+                >
+                    ❄
+                </span>
+            ))}
+            <header
+    className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform ${
+        isScrolled ? 'bg-white shadow-md scale-100' : 'bg-transparent scale-95'
+    }`}
+>
+    <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link
+            href="/"
+            className={`transition-colors duration-300 ${
+                isScrolled ? 'text-primary' : 'text-white'
+            }`}
+        >
+            <Image
+                src={christmas_logo}
+                alt="Duo Creations Logo"
+                width={250}
+                height={150}
+                className="w-auto h-20 transition-transform duration-500 ease-in-out hover:scale-105"
+            />
+        </Link>
+        <nav className="hidden md:flex space-x-4">
+            {['home', 'clients', 'about', 'services', 'portfolio', 'testimonials', 'blog', 'contact'].map(
+                (section) => (
+                    <Button
+                        key={section}
+                        variant={
+                            isScrolled
+                                ? activeSection === section
+                                    ? 'default'
+                                    : 'ghost'
+                                : 'link'
+                        }
+                        className={`transition-transform duration-300 ${
+                            isScrolled ? '' : 'text-white'
+                        } hover:scale-110`}
+                        onClick={() => scrollToSection(section)}
+                    >
+                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                    </Button>
+                )
+            )}
+        </nav>
+    </div>
+</header>
+
             <main className="flex-grow">
                 <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
                     <Image
@@ -105,16 +147,36 @@ export default function IndexPage() {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50" />
                     <div className="relative z-10 text-center text-white">
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">Crafting Unforgettable Events</h1>
-                        <p className="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-300">Elevating Brands Digitally</p>
-                        <Button
-                            size="lg"
-                            className="animate-fade-in-up animation-delay-600"
-                            onClick={() => scrollToSection('services')}
-                        >
-                            Discover Our Services
-                        </Button>
-                    </div>
+    <motion.h1
+        className="text-4xl md:text-6xl font-bold mb-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+    >
+        Crafting Unforgettable Events
+    </motion.h1>
+    <motion.p
+        className="text-xl md:text-2xl mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+    >
+        Elevating Brands Digitally
+    </motion.p>
+    <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+    >
+        <Button
+            size="lg"
+            onClick={() => scrollToSection('services')}
+        >
+            Discover Our Services
+        </Button>
+    </motion.div>
+</div>
+
                     <Button
                         variant="ghost"
                         size="icon"
@@ -291,10 +353,10 @@ export default function IndexPage() {
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <p>&copy; 2024 Duo Creations. All rights reserved.</p>
                         <div className="flex space-x-4 mt-4 md:mt-0">
-                            <Link href="#" className="hover:text-gray-300"><Facebook /></Link>
-                            <Link href="#" className="hover:text-gray-300"><Instagram /></Link>
-                            <Link href="#" className="hover:text-gray-300"><Twitter /></Link>
-                            <Link href="#" className="hover:text-gray-300"><Linkedin /></Link>
+                            <Link href="#" className="hover:text-red-300"><Facebook /></Link>
+                            <Link href="#" className="hover:text-green-300"><Instagram /></Link>
+                            <Link href="#" className="hover:text-red-300"><Twitter /></Link>
+                            <Link href="#" className="hover:text-green-300"><Linkedin /></Link>
                         </div>
                     </div>
                 </div>
