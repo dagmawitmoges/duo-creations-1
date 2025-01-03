@@ -2,7 +2,7 @@
 // import logo from './assets/images/image.png'
 import christmas_logo from './assets/images/image-removebg-preview (38).png'
 
-import bg from './assets/images/IMG_8883.jpg'
+import bg from './assets/images/1.png'
 // import ReactPlayer from 'react-player';
 
 import React, { useState, useEffect } from 'react'

@@ -26,7 +26,7 @@ import { Briefcase, Users, Heart, Lightbulb, Award, Shield } from 'lucide-react'
     title: string;
     description: string;
     role: string;
-    image: StaticImageData;
+    image: string | StaticImageData;
   };
   
   export const coFounders: CoFounder[] = [

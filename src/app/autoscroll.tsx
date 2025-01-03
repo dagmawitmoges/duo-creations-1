@@ -1,9 +1,9 @@
 import { useRef, useEffect } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 interface Client {
   name: string;
-  logo: string;
+  logo: string | StaticImageData;
 }
 
 interface AutoScrollClientsProps {
